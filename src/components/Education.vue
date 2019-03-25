@@ -1,7 +1,7 @@
 <template>
   <div class="p-5">
     <h1 class="display-4">Education</h1>
-    <div class="pt-5">
+    <div class="pt-3">
       <b-list-group>
         <b-list-group-item v-for="(info, i) in educationInfo" v-bind:key="i" class="flex-column align-items-start border-0">
           <div class="d-flex w-100 justify-content-between">
