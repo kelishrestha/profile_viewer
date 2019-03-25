@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card w-100">
-        <img src="https://scontent.fktm8-1.fna.fbcdn.net/v/t1.0-9/22528488_10208674443253424_8742489099592047203_n.jpg?_nc_cat=102&_nc_ht=scontent.fktm8-1.fna&oh=ae70d3f6448024ca51666a7ba58d7aa0&oe=5D4F0D66" class="card-img-top" alt="Profile Pic">
+        <img :src="image" class="card-img-top" alt="Profile Pic">
         <div class="card-body bg-personal-info">
           <h2 class="card-title text-center text-white">General Information</h2>
           <div class="card-text">
@@ -29,6 +29,7 @@
 export default {
   name: "PersonalInfo",
   data: () => ({
+    image: "https://scontent.fktm8-1.fna.fbcdn.net/v/t1.0-9/22528488_10208674443253424_8742489099592047203_n.jpg?_nc_cat=102&_nc_ht=scontent.fktm8-1.fna&oh=ae70d3f6448024ca51666a7ba58d7aa0&oe=5D4F0D66",
     personalinfo: [
       {
         key: "name",
