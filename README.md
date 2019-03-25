@@ -1,4 +1,5 @@
-# profile_viewer
+# Profile Viewer
+Single Page Application with Vue JS
 
 ## Project setup
 ```
