@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-12">
-      <div class="card w-100">
+      <div class="card w-100 border-0">
         <img :src="image" class="card-img-top" alt="Profile Pic">
         <div class="card-body bg-personal-info">
           <h2 class="card-title text-center text-white">General Information</h2>

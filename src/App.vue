@@ -8,7 +8,7 @@
         <div class="col-md-4 p-0">
           <PersonalInfo />
         </div>
-        <div class="col-md-8 border p-0 bg-light">
+        <div class="col-md-8 p-0 bg-light">
           <b-card-body
             id="nav-scroller"
             ref="content"
