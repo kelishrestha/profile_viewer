@@ -1,10 +1,6 @@
 <template>
   <div class="p-5">
-    <h4 class="text-secondary">KUDO Interpreter</h4>
-    <h1 class="display-4">{{ personalinfo.name }}</h1>
-    <blockquote class="blockquote">
-      <p class="mb-0"><i>{{ personalinfo.quote }}</i></p>
-    </blockquote>
+    <h1 class="display-4">Experience</h1>
     <div class="pt-5">
       <h4>Description</h4>
       <p>{{ personalinfo.description }}</p>
