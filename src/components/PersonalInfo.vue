@@ -34,7 +34,7 @@ export default {
       {
         key: "name",
         value: "Kelina Shrestha",
-        icon: "pen"
+        icon: "grin-beam"
       },
       {
         key: "address",
