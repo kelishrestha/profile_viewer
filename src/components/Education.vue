@@ -1,13 +1,21 @@
 <template>
   <div class="p-5">
-    <h4 class="text-secondary">KUDO Interpreter</h4>
-    <h1 class="display-4">{{ personalinfo.name }}</h1>
-    <blockquote class="blockquote">
-      <p class="mb-0"><i>{{ personalinfo.quote }}</i></p>
-    </blockquote>
+    <h1 class="display-4">Education</h1>
     <div class="pt-5">
-      <h4>Description</h4>
-      <p>{{ personalinfo.description }}</p>
+      <b-list-group>
+        <b-list-group-item v-for="(info, i) in educationInfo" v-bind:key="i" class="flex-column align-items-start border-0">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ info.heading }}</h5>
+            <!-- <small>3 days ago</small> -->
+          </div>
+
+          <p class="mb-1">
+            {{ info.description }}
+          </p>
+
+          <!-- <small>Donec id elit non mi porta.</small> -->
+        </b-list-group-item>
+      </b-list-group>
     </div>
   </div>
 </template>
@@ -16,21 +24,24 @@
 export default {
   name: "Education",
   data: () => ({
-    personalinfo: {
-      name: "Kelina Shrestha",
-      skilled_languages: [
-        {
-          name: "English",
-          color: "badge badge-secondary"
-        },
-        {
-          name: "Nepali",
-          color: "badge badge-danger ml-2"
-        }
-      ],
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae sapien porttitor, dignissim quam sit amet, aliquam lorem. Fusce id ligula non risus mollis consectetur. Nam lobortis, erat quis pulvinar dignissim, velit ligula ullamcorper ipsum, at sodales elit odio at velit. Sed a est a quam mattis suscipit. Proin et faucibus diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae sapien porttitor, dignissim quam sit amet, aliquam lorem. Fusce id ligula non risus mollis consectetur. Nam lobortis, erat quis pulvinar dignissim, velit ligula ullamcorper ipsum, at sodales elit odio at velit. Sed a est a quam mattis suscipit.",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
-    }
+    educationInfo: [
+      {
+        heading: "Highest education completed",
+        description: "Graduate"
+      },
+      {
+        heading: "Graduation Date",
+        description: "12th November 2015"
+      },
+      {
+        heading: "School",
+        description: "Lorem Ipsum"
+      },
+      {
+        heading: "Interpretation Degree",
+        description: "No"
+      }
+    ]
   })
 };
 </script>
