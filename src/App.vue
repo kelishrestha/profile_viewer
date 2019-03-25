@@ -15,15 +15,15 @@
             style="position:relative; height: 80vh; overflow-y:scroll;"
           >
             <p id="About"><About /></p>
-            <hr>
+            <hr class="w-75 float-left ml-5">
             <p id="ProfessionalDetails"><ProfessionalDetails /></p>
-            <hr>
+            <hr class="w-75 float-left ml-5">
             <p id="Languages"><Languages /></p>
-            <hr>
+            <hr class="w-75 float-left ml-5">
             <p id="Education"><Education /></p>
-            <hr>
+            <hr class="w-75 float-left ml-5">
             <p id="Experience"><Experience /></p>
-            <hr>
+            <hr class="w-75 float-left ml-5">
             <p id="Contact"><Contact /></p>
           </b-card-body>
         </div>
