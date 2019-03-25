@@ -44,7 +44,7 @@ export default {
       {
         key: "dob",
         value: "March 28, 1992",
-        icon: "star"
+        icon: "birthday-cake"
       },
       {
         key: "email",
