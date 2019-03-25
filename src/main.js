@@ -1,7 +1,26 @@
 import Vue from "vue";
 import App from "./App.vue";
+import BootstrapVue from "bootstrap-vue";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faPen as fasPen,
+  faHome as fasHome,
+  faEnvelope as fasEnvelope,
+  faStar as fasStar,
+  faPhoneVolume as fasPhoneVolume,
+
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+// Import bootstrap css
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.config.productionTip = false;
+Vue.use(BootstrapVue);
+library.add(fasPen, fasHome, fasEnvelope, fasStar, fasPhoneVolume);
+
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 new Vue({
   render: h => h(App)
