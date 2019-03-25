@@ -8,6 +8,9 @@ import {
   faEnvelope as fasEnvelope,
   faStar as fasStar,
   faPhoneVolume as fasPhoneVolume,
+  faMapMarker as fasMapMarker,
+  faBuilding as fasBuilding,
+  faClock as fasClock
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -18,7 +21,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
-library.add(fasGrinBeam, fasHome, fasEnvelope, fasStar, fasPhoneVolume);
+library.add(fasGrinBeam, fasHome, fasEnvelope, fasStar, fasPhoneVolume, fasMapMarker, fasBuilding, fasClock);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

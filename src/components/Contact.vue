@@ -1,13 +1,54 @@
 <template>
   <div class="p-5">
-    <h4 class="text-secondary">KUDO Interpreter</h4>
-    <h1 class="display-4">{{ personalinfo.name }}</h1>
-    <blockquote class="blockquote">
-      <p class="mb-0"><i>{{ personalinfo.quote }}</i></p>
-    </blockquote>
-    <div class="pt-5">
-      <h4>Description</h4>
-      <p>{{ personalinfo.description }}</p>
+    <h1 class="display-4">Contact</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <font-awesome-icon icon="envelope" class="fa-lg"></font-awesome-icon>
+        {{ contactInfo.email }}
+      </div>
+      <div class="col-md-12 pt-2">
+        <font-awesome-icon icon="map-marker" class="fa-lg"></font-awesome-icon>
+        {{ contactInfo.country }}
+      </div>
+      <div class="col-md-12 pt-2">
+        <font-awesome-icon icon="building" class="fa-lg"></font-awesome-icon>
+        {{ contactInfo.city }}
+      </div>
+      <div class="col-md-12 pt-2">
+        <font-awesome-icon icon="clock" class="fa-lg"></font-awesome-icon>
+        {{ contactInfo.timezone }}
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 pt-2">
+        <h4> Nationality </h4>
+
+        {{ contactInfo.nationality }}
+      </div>
+      <div class="col-md-12 pt-2">
+        <h4> Other Nationalities </h4>
+        <ul class="list-unstyled mb-0">
+          <li v-for="(info, index) in contactInfo.other_nationalities" v-bind:key="index" class="pb-2">
+            {{ index + 1 }}
+            <span class="pl-2">
+              {{ info.name }}
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12 pt-2">
+        <h4> Links </h4>
+        <ul class="list-unstyled mb-0">
+          <li v-for="(info, index) in contactInfo.links" v-bind:key="index" class="pb-2">
+            <span class="text-capitalize">
+              {{ info.name }}:
+            </span>
+            <a :href="info.url">
+              {{ info.url }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -16,9 +57,13 @@
 export default {
   name: "Contact",
   data: () => ({
-    personalinfo: {
-      name: "Kelina Shrestha",
-      skilled_languages: [
+    contactInfo: {
+      email: "kelishrestha97@gmail.com",
+      country: "Nepal",
+      city: "Kathmandu",
+      timezone: "Kathmandu",
+      nationality: "Nepali",
+      other_nationalities: [
         {
           name: "English",
           color: "badge badge-secondary"
@@ -28,8 +73,16 @@ export default {
           color: "badge badge-danger ml-2"
         }
       ],
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae sapien porttitor, dignissim quam sit amet, aliquam lorem. Fusce id ligula non risus mollis consectetur. Nam lobortis, erat quis pulvinar dignissim, velit ligula ullamcorper ipsum, at sodales elit odio at velit. Sed a est a quam mattis suscipit. Proin et faucibus diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae sapien porttitor, dignissim quam sit amet, aliquam lorem. Fusce id ligula non risus mollis consectetur. Nam lobortis, erat quis pulvinar dignissim, velit ligula ullamcorper ipsum, at sodales elit odio at velit. Sed a est a quam mattis suscipit.",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+      links: [
+        {
+          name: 'linkedin',
+          url: 'https://google.com'
+        },
+        {
+          name: 'web',
+          url: 'https://google.com'
+        }
+      ]
     }
   })
 };
