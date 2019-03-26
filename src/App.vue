@@ -62,7 +62,8 @@ export default {
   methods: {
     authenticateUser: function(){
       const authenticationUrl = baseURI + "/api/v2/users/authenticate";
-      this.$http.get(authenticationUrl)
+      const authenticationBody = {"login":{"email":"client@kudoway.com","password":"test1234"}};
+      this.$http.post(authenticationUrl, authenticationBody)
       .then(response => {
         localStorage.setItem('xtoken', response.data.token)
       })
