@@ -14,17 +14,17 @@
             ref="content"
             style="position:relative; height: 80vh; overflow-y:scroll;"
           >
-            <p id="About"><About /></p>
+            <p id="About"><About :profileDetails="profileDetails"/></p>
             <hr class="w-75 float-left ml-5">
-            <p id="ProfessionalDetails"><ProfessionalDetails /></p>
+            <p id="ProfessionalDetails"><ProfessionalDetails :profileDetails="profileDetails"/></p>
             <hr class="w-75 float-left ml-5">
-            <p id="Languages"><Languages /></p>
+            <p id="Languages"><Languages :profileDetails="profileDetails"/></p>
             <hr class="w-75 float-left ml-5">
-            <p id="Education"><Education /></p>
+            <p id="Education"><Education :profileDetails="profileDetails"/></p>
             <hr class="w-75 float-left ml-5">
-            <p id="Experience"><Experience /></p>
+            <p id="Experience"><Experience :profileDetails="profileDetails"/></p>
             <hr class="w-75 float-left ml-5">
-            <p id="Contact"><Contact /></p>
+            <p id="Contact"><Contact :profileDetails="profileDetails"/></p>
           </b-card-body>
         </div>
       </div>
@@ -41,6 +41,7 @@ import Languages from "./components/Languages.vue";
 import Education from "./components/Education.vue";
 import Experience from "./components/Experience.vue";
 import Contact from "./components/Contact.vue";
+const baseURI = 'https://staging-api.kudoway.com';
 
 export default {
   name: "app",
@@ -53,6 +54,48 @@ export default {
     Education,
     Experience,
     Contact
+  },
+  props: {
+    profileDetails: { type: Object },
+    profileId: { type: Number }
+  },
+  methods: {
+    authenticateUser: function(){
+      const authenticationUrl = baseURI + "/api/v2/users/authenticate";
+      this.$http.get(authenticationUrl)
+      .then(response => {
+        localStorage.setItem('xtoken', response.data.token)
+      })
+      .catch(error => {
+        console.log(error)
+        this.errored = true
+      })
+    },
+    getUserDetail: function(){
+      this.authenticateUser();
+      const profileUrl = baseURI + "/api/v2/users/1349/profile/1349";
+      this.$http({
+        method:'get',
+        url: profileUrl,
+        headers: {'Content-Type': 'application/json', 'X-API-TOKEN': localStorage.getItem('xtoken')}
+      })
+      .then(profileResponse => {
+        // this.info = response
+        localStorage.setItem('profileId', '1349');
+        localStorage.setItem('profileDetails', JSON.stringify(profileResponse.data))
+        this.profileDetails = profileResponse.data
+        this.profileId = 1349
+      })
+      .catch(error => {
+        console.log(error)
+        this.errored = true
+      })
+    }
+  },
+  computed: {
+    setData (){
+      this.getUserDetail();
+    }
   }
 };
 </script>

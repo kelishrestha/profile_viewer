@@ -15,6 +15,7 @@ import {
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import axios from 'axios';
 
 // Import bootstrap css
 import "bootstrap/dist/css/bootstrap.css";
@@ -25,6 +26,7 @@ Vue.use(BootstrapVue);
 library.add(fasGrinBeam, fasHome, fasEnvelope, fasStar, fasPhoneVolume, fasMapMarker, fasBuilding, fasClock, fasBirthdayCake);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.prototype.$http = axios
 
 new Vue({
   render: h => h(App)
