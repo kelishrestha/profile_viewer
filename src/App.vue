@@ -14,7 +14,7 @@
             ref="content"
             style="position:relative; height: 80vh; overflow-y:scroll;"
           >
-            <p id="About"><About :profileDetails="profileDetails"/></p>
+            <p id="About"><About :user="details['user']"/></p>
             <hr class="w-75 float-left ml-5">
             <p id="ProfessionalDetails"><ProfessionalDetails :profileDetails="profileDetails"/></p>
             <hr class="w-75 float-left ml-5">
@@ -56,47 +56,35 @@ export default {
     Contact
   },
   props: {
-    profileDetails: { type: Object },
-    profileId: { type: Number }
+    profileDetails: Object,
+    details: Object,
+    profileId: Number
   },
   methods: {
-    authenticateUser: function(){
-      const authenticationUrl = baseURI + "/api/v2/users/authenticate";
-      const authenticationBody = {"login":{"email":"client@kudoway.com","password":"test1234"}};
-      this.$http.post(authenticationUrl, authenticationBody)
-      .then(response => {
-        localStorage.setItem('xtoken', response.data.token)
+    async getUserDetail () {
+      const profileUrl = baseURI + "/api/v2/users/1349/profile/1349";
+      await this.$http({
+        method:'get',
+        url: profileUrl,
+        headers: {'Content-Type': 'application/json', 'X-API-TOKEN': 'itsAPIToken'}
+      })
+      .then(profileResponse => {
+        // localStorage.setItem('profileId', '1349');
+        // localStorage.setItem('profileDetails', JSON.stringify(profileResponse.data))
+        this.details = profileResponse.data
+        this.categorizeData();
       })
       .catch(error => {
         console.log(error)
         this.errored = true
       })
     },
-    getUserDetail: function(){
-      this.authenticateUser();
-      const profileUrl = baseURI + "/api/v2/users/1349/profile/1349";
-      this.$http({
-        method:'get',
-        url: profileUrl,
-        headers: {'Content-Type': 'application/json', 'X-API-TOKEN': localStorage.getItem('xtoken')}
-      })
-      .then(profileResponse => {
-        // this.info = response
-        localStorage.setItem('profileId', '1349');
-        localStorage.setItem('profileDetails', JSON.stringify(profileResponse.data))
-        this.profileDetails = profileResponse.data
-        this.profileId = 1349
-      })
-      .catch(error => {
-        console.log(error)
-        this.errored = true
-      })
+    categorizeData() {
+      debugger
     }
   },
-  computed: {
-    setData (){
-      this.getUserDetail();
-    }
+  beforeMount() {
+    this.getUserDetail();
   }
 };
 </script>
